@@ -1,0 +1,20 @@
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    padding-top: auto;
+    background-image: url('/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    height: 92.2vh;
+}
+
+#hero h1 {
+    font-size: 4rem;
+}
+
+#hero h3 {
+    font-size: 1.25rem;
+}

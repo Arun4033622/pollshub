@@ -1,0 +1,20 @@
+td a {
+    text-decoration: none;
+    color: white;
+}
+
+td a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#delete-button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+#delete-button:focus {
+    outline: none;
+}

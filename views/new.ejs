@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+<link rel="stylesheet" href="/style/new.css">
+
+<div class="container">
+    <form action="/polls" method="POST">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter poll title">
+        </div>
+        <div class="form-group">
+            <label for="options">Options</label>
+            <div id="options-input">
+              <input type="text" class="form-control" name="options[0]">
+              <input type="text" class="form-control" name="options[1]">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" id="add-option" class="btn btn-primary">Add Option</button>
+      </form>
+</div>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/popper.js/dist/popper.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/script/new.js"></script>
+</body>
+</html>

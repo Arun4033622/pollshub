@@ -1,0 +1,24 @@
+{
+  "name": "pollshub",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Arun Kumar"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "chart.js": "^2.7.2"
+  }
+}

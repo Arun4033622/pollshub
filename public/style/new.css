@@ -1,0 +1,11 @@
+form {
+    padding-top: 50px;
+}
+
+#options-input {
+    width: 50%;
+}
+
+#options-input input {
+    margin-top: 5px;
+}

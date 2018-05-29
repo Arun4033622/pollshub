@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+<link rel="stylesheet" href="/style/mypolls.css">
+
+<table class="table table-hover table-dark table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>X</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% polls.forEach((poll, index) => { %>
+        <tr>
+          <th><%= index + 1 %></th>
+          <td><a href="/polls/<%= poll._id %>"><%= poll.title %></a></td>
+          <td><form action="/polls/<%= poll._id %>?_method=DELETE" method="POST"><button id="delete-button">Delete Poll</button></form></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+<% include ./partials/footer %>

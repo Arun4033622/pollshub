@@ -1,0 +1,61 @@
+<% include ./partials/header %>
+<link rel="stylesheet" href="/style/show.css">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1><%= poll.title %></h1>
+            <form action="/polls/<%= poll._id %>?_method=PUT" method="POST">
+                <% poll.options.forEach(option => { %>
+                    <div>
+                        <label><input type="radio" name="option" value="<%= option.option %>"> <%= option.option %></label> 
+                    </div>
+                <% }); %>
+                <input type="text" class="form-control" name="ownOption" placeholder="Add your own option?">
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-md-6"><a href="https://twitter.com/intent/tweet?text=<%= poll.title %> Vote now @ https://localhost:8000/polls/<%= poll._id %>" target="_blank" class="btn btn-outline-primary">Share on Twitter</a><canvas id="myChart"></canvas></div>
+    </div>
+</div>
+
+<script src="/bower_components/chart.js/dist/Chart.min.js"></script>
+<script>
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    var poll = <%- JSON.stringify(poll) -%>;
+    var labels = [];
+    var data = [];
+    var backgroundColor = [];
+    poll.options.forEach(option => {
+        labels.push(option.option);
+        data.push(option.votes);
+        backgroundColor.push(getRandomColor());
+    });
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'doughnut',
+
+    // The data for our dataset
+    data: {
+        labels,
+        datasets: [{
+            backgroundColor,
+            borderColor: 'rgb(255, 255, 255)',
+            data,
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
+</script>
+
+<% include ./partials/footer %>
