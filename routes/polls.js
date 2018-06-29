@@ -64,7 +64,12 @@ router.put('/:id', (req, res) => {
 	Poll.findById(req.params.id)
 		.then(poll => {
 			poll.voters.forEach(voter => {
-				if (req.user.id === String(voter.user) || req.ip === voter.ipAddress) {
+				if (req.user) {
+					if (req.user.id === String(voter.user)) {
+						alreadyVoted = true;
+					}
+				}
+				else if (req.ip === voter.ipAddress) {
 					alreadyVoted = true;
 				}
 			});
