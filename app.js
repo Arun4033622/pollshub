@@ -1,12 +1,13 @@
-const express        = require('express'),
-      app            = express(),
-      path           = require('path'),
-      mongoose       = require('mongoose'),
-      bodyParser     = require('body-parser'),
-      methodOverride = require('method-override'),
-      cookieSession  = require('cookie-session'),
-      passport       = require('passport'),
-      passportSetup  = require('./config/passport-setup');
+const express          = require('express'),
+      app              = express(),
+      path             = require('path'),
+      mongoose         = require('mongoose'),
+      bodyParser       = require('body-parser'),
+      expressValidator = require('express-validator');
+      methodOverride   = require('method-override'),
+      cookieSession    = require('cookie-session'),
+      passport         = require('passport'),
+      passportSetup    = require('./config/passport-setup');
 
 // Connect to DB
 mongoose.connect('mongodb://pollshub:pollshub@ds151963.mlab.com:51963/pollshub')
@@ -26,6 +27,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // bodyParser config
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Use validator
+app.use(expressValidator({
+    customValidators: {
+        optionNotEmpty: (options) => {
+            for (let option of options) {
+                if (!option) return false;
+            }
+            return true;
+        }
+    }
+}));
 
 // Use methodOverride
 app.use(methodOverride('_method'));

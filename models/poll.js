@@ -6,7 +6,14 @@ const pollSchema = new mongoose.Schema({
         option: String,
         votes: Number
     }],
-    createdBy: String
+    createdBy: String,
+    voters: [{
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        ipAddress: String
+    }]
 });
 
 module.exports = mongoose.model('Poll', pollSchema);

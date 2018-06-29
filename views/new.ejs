@@ -4,6 +4,13 @@
 <div class="container">
     <form action="/polls" method="POST">
         <div class="form-group">
+          <% if (errors) { %>
+            <% errors.forEach(error => { %>
+              <div class="alert alert-warning" role="alert">
+                  <%= error.msg %>
+              </div>
+            <% }); %>
+          <% } %>
           <label for="title">Title</label>
           <input type="text" class="form-control" id="title" name="title" placeholder="Enter poll title">
         </div>
