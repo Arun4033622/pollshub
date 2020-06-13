@@ -14,6 +14,7 @@ Create &amp; share polls!
 
 ## Tech Stack:
 - HTML, CSS, Bootstrap
+- Chart.js
 - Node
 - Express
 - Mongo
